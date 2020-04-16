@@ -1,0 +1,2 @@
+lib/app/modules/transactions/components/balance_panel_controller.dart
+test/app/modules/transactions/components/balance_panel_controller_test.dart

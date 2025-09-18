@@ -1,8 +1,9 @@
 import 'dart:io';
 
-import 'package:dart_week_mobile/app/repositories/user_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+
+import '../repositories/user_repository.dart';
 
 class CustomDio {
   Dio _dio;

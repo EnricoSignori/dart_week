@@ -1,7 +1,7 @@
-import 'package:dart_week_mobile/app/shared/utils/size_utils.dart';
-import 'package:dart_week_mobile/app/shared/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import '../../shared/utils/size_utils.dart';
+import '../../shared/utils/theme_utils.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,8 +16,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => controller.verifyLoged());
+    WidgetsBinding.instance.addPostFrameCallback((_) => controller.verifyLoged());
   }
 
   @override

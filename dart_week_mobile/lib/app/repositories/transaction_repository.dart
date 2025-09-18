@@ -1,21 +1,20 @@
-import 'package:dart_week_mobile/app/core/custom_dio.dart';
-import 'package:dart_week_mobile/app/models/transaction_model.dart';
-import 'package:dart_week_mobile/app/models/transaction_total_model.dart';
 import 'package:dio/dio.dart';
+
+import '../core/custom_dio.dart';
+import '../models/transaction_model.dart';
+import '../models/transaction_total_model.dart';
 
 class TransactionRepository {
   Future<List<TransactionModel>> getAllTransactions(String yearMonth) {
     final Dio dio = CustomDio.withAutentication().instance;
-    return dio.get('/transaction/$yearMonth').then((res) => res.data
-        .map<TransactionModel>((m) => TransactionModel.fromMap(m))
-        .toList());
+    return dio
+        .get('/transaction/$yearMonth')
+        .then((res) => res.data.map<TransactionModel>((m) => TransactionModel.fromMap(m)).toList());
   }
 
   Future<TransactionTotalModel> getYearMonthTotal(String yearMonth) {
     final Dio dio = CustomDio.withAutentication().instance;
-    return dio
-        .get('/transaction/total/$yearMonth')
-        .then((res) => TransactionTotalModel.fromMap(res.data));
+    return dio.get('/transaction/total/$yearMonth').then((res) => TransactionTotalModel.fromMap(res.data));
   }
 
   Future<void> saveTransaction(

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:dart_week_mobile/app/core/store_state.dart';
-import 'package:dart_week_mobile/app/repositories/user_repository.dart';
-import 'package:dart_week_mobile/app/shared/utils/store_utils.dart';
+
+import '../../repositories/user_repository.dart';
+import '../../shared/utils/store_utils.dart';
 
 part 'login_controller.g.dart';
 

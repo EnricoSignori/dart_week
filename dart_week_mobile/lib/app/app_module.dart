@@ -1,10 +1,10 @@
-import 'package:dart_week_mobile/app/app_controller.dart';
-import 'package:dart_week_mobile/app/app_widget.dart';
-import 'package:dart_week_mobile/app/modules/home/home_module.dart';
-import 'package:dart_week_mobile/app/modules/login/login_module.dart';
-import 'package:dart_week_mobile/app/modules/transaction/transaction_module.dart';
-import 'package:dart_week_mobile/app/repositories/transaction_repository.dart';
-import 'package:dart_week_mobile/app/repositories/user_repository.dart';
+import 'app_controller.dart';
+import 'app_widget.dart';
+import 'modules/home/home_module.dart';
+import 'modules/login/login_module.dart';
+import 'modules/transaction/transaction_module.dart';
+import 'repositories/transaction_repository.dart';
+import 'repositories/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

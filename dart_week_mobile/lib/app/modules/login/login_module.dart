@@ -1,8 +1,9 @@
-import 'package:dart_week_mobile/app/modules/login/login_controller.dart';
-import 'package:dart_week_mobile/app/modules/register/register_module.dart';
-import 'package:dart_week_mobile/app/repositories/user_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dart_week_mobile/app/modules/login/login_page.dart';
+
+import '../../repositories/user_repository.dart';
+import '../register/register_module.dart';
+import 'login_controller.dart';
+import 'login_page.dart';
 
 class LoginModule extends ChildModule {
   @override

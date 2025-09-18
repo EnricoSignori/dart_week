@@ -5,8 +5,8 @@ class TransactionTotalItemModel {
   final String categoryItem;
 
   TransactionTotalItemModel({
-    this.total,
-    this.categoryItem,
+    required this.total,
+    required this.categoryItem,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,17 +16,14 @@ class TransactionTotalItemModel {
     };
   }
 
-  static TransactionTotalItemModel fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
+  factory TransactionTotalItemModel.fromMap(Map<String, dynamic> map) {
     return TransactionTotalItemModel(
-      total: map['total'],
-      categoryItem: map['categoryItem'],
+      total: (map['total'] is int) ? (map['total'] as int).toDouble() : (map['total'] ?? 0.0),
+      categoryItem: map['categoryItem'] ?? '',
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  static TransactionTotalItemModel fromJson(String source) =>
-      fromMap(json.decode(source));
+  factory TransactionTotalItemModel.fromJson(String source) => TransactionTotalItemModel.fromMap(json.decode(source));
 }

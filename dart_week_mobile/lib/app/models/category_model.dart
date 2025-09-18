@@ -6,9 +6,9 @@ class CategoryModel {
   final String categoryType;
 
   CategoryModel({
-    this.id,
-    this.name,
-    this.categoryType,
+    required this.id,
+    required this.name,
+    required this.categoryType,
   });
 
   Map<String, dynamic> toMap() {
@@ -19,17 +19,15 @@ class CategoryModel {
     };
   }
 
-  static CategoryModel fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
+  factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
-      id: map['id'],
-      name: map['name'],
-      categoryType: map['categoryType'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? '',
+      categoryType: map['categoryType'] ?? '',
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  static CategoryModel fromJson(String source) => fromMap(json.decode(source));
+  factory CategoryModel.fromJson(String source) => CategoryModel.fromMap(json.decode(source));
 }

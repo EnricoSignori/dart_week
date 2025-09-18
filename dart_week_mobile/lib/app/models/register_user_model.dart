@@ -2,31 +2,28 @@ import 'dart:convert';
 
 class RegisterUserModel {
   final String login;
-  final String passwird;
+  final String password;
 
   RegisterUserModel({
-    this.login,
-    this.passwird,
+    required this.login,
+    required this.password,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'login': login,
-      'passwird': passwird,
+      'password': password,
     };
   }
 
-  static RegisterUserModel fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
+  factory RegisterUserModel.fromMap(Map<String, dynamic> map) {
     return RegisterUserModel(
-      login: map['login'],
-      passwird: map['passwird'],
+      login: map['login'] ?? '',
+      password: map['password'] ?? '',
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  static RegisterUserModel fromJson(String source) =>
-      fromMap(json.decode(source));
+  factory RegisterUserModel.fromJson(String source) => RegisterUserModel.fromMap(json.decode(source));
 }

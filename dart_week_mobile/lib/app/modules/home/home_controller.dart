@@ -1,7 +1,8 @@
-import 'package:dart_week_mobile/app/mixins/loader_mixin.dart';
-import 'package:dart_week_mobile/app/repositories/user_repository.dart';
 import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../mixins/loader_mixin.dart';
+import '../../repositories/user_repository.dart';
 
 part 'home_controller.g.dart';
 

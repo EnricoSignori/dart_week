@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dart_week_mobile/app/models/transaction_total_item_model.dart';
+import 'transaction_total_item_model.dart';
 
 class TransactionTotalModel {
   final double total;
@@ -9,10 +9,10 @@ class TransactionTotalModel {
   final TransactionTotalItemModel expense;
 
   TransactionTotalModel({
-    this.total,
-    this.balance,
-    this.revenue,
-    this.expense,
+    required this.total,
+    required this.balance,
+    required this.revenue,
+    required this.expense,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,12 +24,10 @@ class TransactionTotalModel {
     };
   }
 
-  static TransactionTotalModel fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
+  factory TransactionTotalModel.fromMap(Map<String, dynamic> map) {
     return TransactionTotalModel(
-      total: map['total'],
-      balance: map['balance'],
+      total: (map['total'] is int) ? (map['total'] as int).toDouble() : (map['total'] ?? 0.0),
+      balance: (map['balance'] is int) ? (map['balance'] as int).toDouble() : (map['balance'] ?? 0.0),
       revenue: TransactionTotalItemModel.fromMap(map['revenue']),
       expense: TransactionTotalItemModel.fromMap(map['expense']),
     );
@@ -37,6 +35,5 @@ class TransactionTotalModel {
 
   String toJson() => json.encode(toMap());
 
-  static TransactionTotalModel fromJson(String source) =>
-      fromMap(json.decode(source));
+  factory TransactionTotalModel.fromJson(String source) => TransactionTotalModel.fromMap(json.decode(source));
 }

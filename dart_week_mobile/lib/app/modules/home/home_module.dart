@@ -1,7 +1,8 @@
-import 'package:dart_week_mobile/app/modules/home/home_controller.dart';
-import 'package:dart_week_mobile/app/repositories/user_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dart_week_mobile/app/modules/home/home_page.dart';
+
+import '../../repositories/user_repository.dart';
+import 'home_controller.dart';
+import 'home_page.dart';
 
 class HomeModule extends ChildModule {
   @override

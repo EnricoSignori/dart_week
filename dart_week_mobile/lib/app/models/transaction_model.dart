@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:dart_week_mobile/app/models/category_model.dart';
 import 'package:intl/intl.dart';
+
+import 'category_model.dart';
 
 class TransactionModel {
   final int id;
@@ -11,11 +12,11 @@ class TransactionModel {
   final CategoryModel categoryModel;
 
   TransactionModel({
-    this.id,
-    this.createdAt,
-    this.description,
-    this.value,
-    this.categoryModel,
+    required this.id,
+    required this.createdAt,
+    required this.description,
+    required this.value,
+    required this.categoryModel,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,22 +29,26 @@ class TransactionModel {
     };
   }
 
-  static TransactionModel fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
-    final DateFormat dateFormat = DateFormat('y-MM-d');
+  factory TransactionModel.fromMap(Map<String, dynamic> map) {
+    DateTime created;
+    if (map['createdAt'] is int) {
+      created = DateTime.fromMillisecondsSinceEpoch(map['createdAt']);
+    } else if (map['createdAt'] is String) {
+      created = DateFormat('y-MM-d').parse(map['createdAt']);
+    } else {
+      created = DateTime.now();
+    }
 
     return TransactionModel(
-      id: map['id'],
-      createdAt: dateFormat.parse(map['createdAt']),
-      description: map['description'],
-      value: map['value'],
+      id: map['id'] ?? 0,
+      createdAt: created,
+      description: map['description'] ?? '',
+      value: (map['value'] is int) ? (map['value'] as int).toDouble() : (map['value'] ?? 0.0),
       categoryModel: CategoryModel.fromMap(map['categoryModel']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  static TransactionModel fromJson(String source) =>
-      fromMap(json.decode(source));
+  factory TransactionModel.fromJson(String source) => TransactionModel.fromMap(json.decode(source));
 }

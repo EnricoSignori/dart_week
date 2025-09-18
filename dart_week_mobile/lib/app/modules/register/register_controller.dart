@@ -1,8 +1,9 @@
-import 'package:dart_week_mobile/app/core/store_state.dart';
-import 'package:dart_week_mobile/app/repositories/user_repository.dart';
-import 'package:dart_week_mobile/app/shared/utils/store_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../core/store_state.dart';
+import '../../repositories/user_repository.dart';
+import '../../shared/utils/store_utils.dart';
 
 part 'register_controller.g.dart';
 
@@ -39,8 +40,7 @@ abstract class _RegisterControllerBase with Store {
   changePassword(String passwordValue) => password = passwordValue;
 
   @action
-  changePasswordAgain(String passwordAgainValue) =>
-      passwordAgain = passwordAgainValue;
+  changePasswordAgain(String passwordAgainValue) => passwordAgain = passwordAgainValue;
 
   @computed
   StoreState get state => StoreUtils.statusCheck(_registerFuture);
